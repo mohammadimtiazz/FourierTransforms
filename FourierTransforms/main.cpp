@@ -27,25 +27,25 @@ int main()
 	Process 1 follwoing:::
 	Complex plane to contain the DFT coefficients {[0]-Real,[1]-Img}
 	*/
-	//Mat planes[] = { Mat_<float>(img), Mat::zeros(img.size(), CV_32F) };
-	//Mat complexI;
-	//merge(planes, 2, complexI);
+	Mat planes[] = { Mat_<float>(img), Mat::zeros(img.size(), CV_32F) };
+	Mat complexI;
+	merge(planes, 2, complexI);
 
-	//dft(complexI, complexI);	// Applying DFT
+	dft(complexI, complexI);	// Applying DFT
 
 	/*
 	Process 2 follwoing:::
 	Complex plane to contain the DFT coefficients {[0]-Real,[1]-Img}
 	*/
-	Mat dftInput, dftImage1;
-	img.convertTo(dftInput, CV_32F);
-	dft(dftInput, dftImage1, DFT_COMPLEX_OUTPUT);    // Applying DFT
+	//Mat dftInput, dftImage1;
+	//img.convertTo(dftInput, CV_32F);
+	//dft(dftInput, dftImage1, DFT_COMPLEX_OUTPUT);    // Applying DFT
 
 
 	// Reconstructing original imae from the DFT coefficients
 	Mat invDFT, invDFTcvt;
-	//idft(complexI, invDFT, DFT_SCALE | DFT_REAL_OUTPUT); // Applying IDFT for process 1
-	idft(dftImage1, invDFT, DFT_SCALE | DFT_REAL_OUTPUT); // Applying IDFT for process 2
+	idft(complexI, invDFT, DFT_SCALE | DFT_REAL_OUTPUT); // Applying IDFT for process 1
+	//idft(dftImage1, invDFT, DFT_SCALE | DFT_REAL_OUTPUT); // Applying IDFT for process 2
 	invDFT.convertTo(invDFTcvt, CV_8U);
 	imshow("Output", invDFTcvt);
 
