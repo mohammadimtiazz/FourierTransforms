@@ -7,8 +7,8 @@ using namespace cv;
 int main()
 {
 	// Read image from file
-	string imgDir = "C:\\Users\\mimtiaz\\visualStudio17Projects\\getMeHired\\computerVision\\standard-test-images-for-Image-Processing\\standard_test_images\\lena.bmp";
-	//string imgDir = "lena.bmp";
+	//string imgDir = "C:\\Users\\mimtiaz\\visualStudio17Projects\\getMeHired\\computerVision\\standard-test-images-for-Image-Processing\\standard_test_images\\lena.bmp";
+	string imgDir = "lena.bmp";
 	Mat img = imread(imgDir, IMREAD_GRAYSCALE);		//Reading one plane grayscale image
 	
 	//checking reading image
@@ -54,6 +54,14 @@ int main()
 
 	// Wait until user press some key
 	waitKey(0);
+
+	//Releasing allocated mamory
+	img.release();
+	planes->release();
+	complexI.release();
+	invDFT.release();
+	invDFTcvt.release();
+
 	return 0;
 }
 
